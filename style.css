@@ -1,0 +1,45 @@
+
+
+body{
+    background-color: #6c7f8e;
+}
+
+.timer, .scores{
+    color:#5d95b6;
+    font-size:25px;
+    -webkit-text-stroke: .25px #e6e9ec;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.heading, .heading2{
+    color:#e6e9ec;
+    font-family: "Open Sans Condensed";
+}
+
+.heading{
+    font-size: 60px;
+}
+
+.heading2{
+    font-size: 18px;
+    /* -webkit-text-stroke: .75px #979777; */
+}
+
+.btnStart{
+    color: #e6e9ec;
+    background-color: #5d95b6;
+    font-size: 25px;
+    padding: 8px 25px;
+    border-radius: 10px;
+}
+
+.questionBox{
+    background-color: #ffebeb;
+    border-style: solid;
+    border-color: #b14e4e;
+    border-width: 1px;
+    border-radius: 8px;
+}
+
+
+
