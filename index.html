@@ -18,7 +18,7 @@
 
                     <p class="scores">View Highscores</p>
 
-                    <p class="timer">Timer: <span>60</span></p>
+                    <p class="timer">Timer: <span id="time">60</span></p>
 
                 </div>
             </div>
@@ -60,9 +60,8 @@
 
                 <div class="col-lg-6 p-3 questionBox">
 
-                    <div class="row d-flex justify-content-center text-center">
+                    <div class="row d-flex justify-content-center text-center question">
 
-                            <p class="question">Question</p>
                     </div>
 
                     <hr>
@@ -71,14 +70,14 @@
 
                         <div class="col-lg-2"></div>
 
-                        <div class="col-lg-4 d-flex justify-content-center text-center">
+                        <div class="col-lg-4 d-flex justify-content-left">
 
-                            <button class="option1">Answer 1</button>
+                            <button class="options option1" data-index="1"></button>
                         </div>
 
-                        <div class="col-lg-4 d-flex justify-content-center text-center">
+                        <div class="col-lg-4 d-flex justify-content-left">
 
-                            <button class="option2">Answer 2</button>
+                            <button class="options option2" data-index="2"></button>
                         </div>
 
                         <div class="col-lg-2"></div>
@@ -88,14 +87,14 @@
 
                         <div class="col-lg-2"></div>
 
-                        <div class="col-lg-4 d-flex justify-content-center text-center">
+                        <div class="col-lg-4 d-flex justify-content-left">
 
-                            <button class="option3">Answer 3</button>
+                            <button class="options option3" data-index="3"></button>
                         </div>
 
-                        <div class="col-lg-4 d-flex justify-content-center text-center">
+                        <div class="col-lg-4 d-flex justify-content-left">
 
-                            <button class="option4">Answer 4</button>
+                            <button class="options option4" data-index="4"></button>
                         </div>
 
                         <div class="col-lg-2"></div>
