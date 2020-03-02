@@ -7,21 +7,33 @@ var btn2 = document.querySelector(".option2");
 var btn3 = document.querySelector(".option3");
 var btn4 = document.querySelector(".option4");
 var timer = document.querySelector("#time");
-var options = document.querySelector(".options");
 var qBox = document.querySelector(".questionBox");
+var scoreBox = document.querySelector("#final-score");
+var options = document.querySelector(".options");
 
 // ================================================================
-
-var score = 0;
-
-var time = 60;
-
-// ================================================================
-
-qBox.style.visibility = "hidden";
+// variables for keeping score and time.
+var score = [];
+var time = 31;
 
 // ================================================================
+//timer function to start 30 second timer when start button is clicked. Interval function will clear once number reaches zero.
+function startTimer() {
+var timeInterval = setInterval(function() {
 
+    time--;
+    timer.innerText = time;
+
+    if(time == 0){
+        clearInterval(timeInterval);
+        options.style.visibility = "hidden";
+        question.innerText = "Click View Highscores to see leaderboard!";
+    };
+}, 1000);
+};
+
+// ================================================================
+// Object variables for quiz questions. Each contain question and four answer options.
 var q1 = {
     question: "In what city was Jeffrey born?",
     answer1: "Tallahassee, FL",
@@ -47,8 +59,10 @@ var q3 = {
 };
 
 // ================================================================
+// Add an click function to the start button. This function will start timer, make the quiz box visible, put the q1 question and options on the divs, and hide the start button.
+btnStart.addEventListener("click", function question1() {
 
-btnStart.addEventListener("click", function() {
+    startTimer();
 
     qBox.style.visibility = "visible";
 
@@ -60,11 +74,7 @@ btnStart.addEventListener("click", function() {
     btn3.innerText = q1.answer3;
     btn4.innerText = q1.answer4;
 
-    btn1.addEventListener("click", question2);
-    btn2.addEventListener("click", question2);
-    btn3.addEventListener("click", question2);
-    btn4.addEventListener("click", question2);
-
+// Click functions for each button, each one starts the findIndex1 function.
     btn1.addEventListener("click", findIndex1);
     btn2.addEventListener("click", findIndex1);
     btn3.addEventListener("click", findIndex1);
@@ -73,23 +83,33 @@ btnStart.addEventListener("click", function() {
 });
 
 // ================================================================
-
+// Function for determining if user chose correct answer for first question. It will push score1 into the score array, and put score on the page. Answer also determines if time should be added or subtracted from timer. 
 function findIndex1() {
     
-    var index = event.target.getAttribute("data-index");
+    var index = event.target.textContent;
 
-    if(index == 1) {
-        score++;
+    if(index === "Tallahassee, FL") {
+        score1 = 10;
+        time = time + 10;
     } else {
-        score--;
+        score1 = 0;
+        time = time - 10;
     };
 
-    console.log(score);
+    question2();
 
+    score.push(score1);
+
+    var finalScore = score.reduce( function(total, amount){
+        return total + amount
+      });
+    
+    scoreBox.innerText = finalScore;
+    
 };
 
 // ================================================================
-
+// Function for second question, which puts second question and second options on the page.
 function question2() {
 
     question.innerText = q2.question;
@@ -98,33 +118,41 @@ function question2() {
     btn3.innerText = q2.answer3;
     btn4.innerText = q2.answer4;
 
-    btn1.addEventListener("click", question3);
-    btn2.addEventListener("click", question3);
-    btn3.addEventListener("click", question3);
-    btn4.addEventListener("click", question3);
-
+// Adding click function to buttons to start findIndex2 function.
     btn1.addEventListener("click", findIndex2);
     btn2.addEventListener("click", findIndex2);
     btn3.addEventListener("click", findIndex2);
-    btn3.addEventListener("click", findIndex2);
+    btn4.addEventListener("click", findIndex2);
 
 };
 
 // ================================================================
-
+// Function for determining if user chose correctly for question two. It will push score2 into the score array, and put score on the page while still pushing score1 as well (which will be 0 no matter the answer chosen).
 function findIndex2() {
 
-    var index2 = event.target.getAttribute("data-index");
+    var index2 = event.target.textContent;
 
-    if(index2 == 2) {
-        score++;
+    if(index2 === "Kitchen Manager") {
+        score2 = 10;
+        time = time + 20;
     } else {
-        score--; 
+        score2 = 0;
     };
+
+    question3();
+
+    score.push(score2);
+
+    var finalScore = score.reduce( function(total, amount){
+        return total + amount
+      });
+    
+    scoreBox.innerText = finalScore;
+    
 };
 
 // ================================================================
-
+// Function puts question 3 and options for third question on the page. 
 function question3() {
 
     question.innerText = q3.question;
@@ -133,23 +161,46 @@ function question3() {
     btn3.innerText = q3.answer3;
     btn4.innerText = q3.answer4;
 
+// Add click function to each button to start findIndex3 function.
+    btn1.addEventListener("click", findIndex3);
+    btn2.addEventListener("click", findIndex3);
+    btn3.addEventListener("click", findIndex3);
+    btn4.addEventListener("click", findIndex3);
+
 };
 
 // ================================================================
+// Function determines if user chose correctly on third question, pushes score3 into the score array, and put score on the page while still pushing score1 and score2 as well (which will both be 0 no matter the answer chosen).
+function findIndex3() {
 
-// function scorePlus() {
-//     score++;
-//     console.log(score);
-// };
+    var index3 = event.target.textContent;
 
-// function scoreMinus() {
-//     score--;
-//     console.log(score);
-// };
+    if(index3 === "Basketball") {
+        score3 = 10;
+        time = time + 20;
+    } else {
+        score3 = 0;
+    };
+
+    score.push(score3);
+
+    var finalScore = score.reduce( function(total, amount){
+        return total + amount
+      });
+    
+    scoreBox.innerText = finalScore;
+
+// Make the questions hidden and put message on the box to tell user where to view high score.
+    options.style.visibility = "hidden";
+
+    question.innerText = "Click View Highscores to see leaderboard!"
+
+    timer.style.visibility = "hidden";
+
+};
 
 
 
-// ================================================================
 
 
 
