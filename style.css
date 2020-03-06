@@ -15,9 +15,18 @@ body{
     font-size: 50px;
 }
 
-.heading, .heading2{
+.heading, .heading2, .form, .score-list, #time{
     color:#e6e9ec;
     font-family: "Open Sans Condensed";
+}
+
+.score-list{
+    font-size: 30px;
+}
+
+.highscore{
+    text-decoration: underline;
+    font-size: 40px;
 }
 
 .heading{
@@ -26,10 +35,10 @@ body{
 
 .heading2{
     font-size: 18px;
-    /* -webkit-text-stroke: .75px #979777; */
+    letter-spacing: 1px;
 }
 
-.btnStart{
+.btnStart, .submit, .clearList{
     color: #e6e9ec;
     background-color: #5d95b6;
     font-size: 25px;
@@ -43,6 +52,15 @@ body{
     border-color: #b14e4e;
     border-width: 1px;
     border-radius: 8px;
+    visibility: hidden;
+}
+
+.answerBox{
+    color: #ffebeb;
+    visibility: hidden;
+}
+
+.submitForm{
     visibility: hidden;
 }
 
