@@ -1,6 +1,9 @@
-
+// Variable for the high score list.
 var highscoreList = document.querySelector(".score-list");
 
+
+// ================================================================
+// Function for retrieving the locally stored array.
 function retrieveHighscore() {
 
     var storedScores = JSON.parse(localStorage.getItem("scoreList"));
@@ -15,6 +18,8 @@ function retrieveHighscore() {
 
 retrieveHighscore();
 
+// ================================================================
+// Put the high score locally stored list on the page.
 function makeList() {
 
     for (var i = 0; i < scoreList.length; i++) {
@@ -28,6 +33,9 @@ function makeList() {
         };
 };
 
+
+// ================================================================
+// Button and function for clearing the list.
 var clear = document.querySelector(".clearList");
 
 clear.addEventListener("click", function() {

@@ -18,14 +18,14 @@ var mark = document.querySelector(".insert");
 var answerBox = document.querySelector(".answerBox");
 
 // ================================================================
-// variables for keeping score and time.
+// variables for keeping score, time, and index answer.
 var score = 0;
 var time = 45;
 var index = "";
 
 
 // ================================================================
-//timer function to start 30 second timer when start button is clicked. Interval function will clear once number reaches zero.
+//timer function to start 45 second timer when start button is clicked. Interval function will clear once number reaches zero.
 function startTimer() {
 var timeInterval = setInterval(function() {
 
@@ -106,7 +106,7 @@ btnStart.addEventListener("click", function question1() {
 });
 
 // ================================================================
-// Function determines if user chose correct answer for first question, and adds to score based off correct or incorrect choice.
+// Function determines if user chose correct answer for first question, and updates score and time based off correct or incorrect choice.
 function findIndex1() {
 
     var index = event.target.textContent;
@@ -121,8 +121,10 @@ function findIndex1() {
         mark.innerText = "Wrong";
     };
 
+// Calls question2 function.
     question2();
 
+// Function to remove click events for finding index1.
     removeEvent1();
     
     scoreBox.innerText = score;
@@ -151,7 +153,7 @@ function question2() {
 };
 
 // ================================================================
-// Function determines if user chose correctly for question two, and adds to score based off correct or incorrect choice.
+// Function determines if user chose correctly for question two, and updates score and time based off correct or incorrect choice.
 function findIndex2() {
 
     var index = event.target.textContent;
@@ -166,8 +168,10 @@ function findIndex2() {
         mark.innerText = "Wrong";
     };
 
+// Call for question3 function.
     question3();
 
+// Function to remove click events for finding index2.
     removeEvent2();
 
     scoreBox.innerText = score;
@@ -193,7 +197,7 @@ function question3() {
 };
 
 // ================================================================
-// Function determines if user chose correctly on third question, and adds to score based off correct or incorrect choice.
+// Function determines if user chose correctly on third question, and updates score and time based off correct or incorrect choice.
 function findIndex3() {
 
     var index = event.target.textContent;
@@ -210,14 +214,16 @@ function findIndex3() {
     
     scoreBox.innerText = score;
 
+// Calls for question4 function.
     question4();
 
+// Function to remove click events for finding index3.
     removeEvent3();
 
 };
 
 // ================================================================
-// Function puts question 3 and options for third question on the page. 
+// Function puts question 4 and options for fourth question on the page. 
 function question4() {
 
     question.innerText = q4.question;
@@ -226,7 +232,7 @@ function question4() {
     btn3.innerText = q4.answer3;
     btn4.innerText = q4.answer4;
 
-// Add click function to each button to start findIndex3 function.
+// Add click function to each button to start findIndex4 function.
     btn1.addEventListener("click", findIndex4);
     btn2.addEventListener("click", findIndex4);
     btn3.addEventListener("click", findIndex4);
@@ -235,7 +241,7 @@ function question4() {
 };
 
 // ================================================================
-// Function determines if user chose correctly for question two, and adds to score based off correct or incorrect choice.
+// Function determines if user chose correctly for fourth question, and adds to score and time based off correct or incorrect choice.
 function findIndex4() {
 
     var index = event.target.textContent;
@@ -250,8 +256,10 @@ function findIndex4() {
         mark.innerText = "Wrong";
     };
 
+// Calls for question5 function.
     question5();
 
+// Function to remove click events for finding index4.
     removeEvent4();
 
     scoreBox.innerText = score;
@@ -259,7 +267,7 @@ function findIndex4() {
 };
 
 // ================================================================
-// Function puts question 3 and options for third question on the page. 
+// Function puts question 5 and options for fifth question on the page. 
 function question5() {
 
     question.innerText = q5.question;
@@ -268,7 +276,7 @@ function question5() {
     btn3.innerText = q5.answer3;
     btn4.innerText = q5.answer4;
 
-// Add click function to each button to start findIndex3 function.
+// Add click function to each button to start findIndex5 function.
     btn1.addEventListener("click", findIndex5);
     btn2.addEventListener("click", findIndex5);
     btn3.addEventListener("click", findIndex5);
@@ -277,7 +285,7 @@ function question5() {
 };
 
 // ================================================================
-// Function determines if user chose correctly for question two, and adds to score based off correct or incorrect choice.
+// Function determines if user chose correctly for fifth question, and adds to score and time based off correct or incorrect choice.
 function findIndex5() {
 
     var index = event.target.textContent;
@@ -292,6 +300,7 @@ function findIndex5() {
         mark.innerText = "Wrong";
     };
 
+// Calls for showSubmit function.
     showSubmit();
 
     scoreBox.innerText = score;
@@ -302,7 +311,7 @@ function findIndex5() {
 
 
 // ================================================================
-// These remove the event listeners for finding the first two correct answers so the score does not keep adding from past questions even though the same buttons are clicked.
+// These remove the event listeners for finding the previous correct answers so the score does not keep adding from past questions even though the same buttons are clicked.
 function removeEvent1() {
     btn1.removeEventListener("click", findIndex1);
     btn2.removeEventListener("click", findIndex1);
@@ -358,16 +367,18 @@ form.addEventListener("submit", function(){
     scoreList.push(nameVal + ": " + score);
     console.log(scoreList);
 
+// Call for function to store the score.
     storeHighscore();
 });
     
 // ================================================================
-
+// Store the high score array in the local storage.
 function storeHighscore() {
 
     localStorage.setItem("scoreList", JSON.stringify(scoreList));
 };
 
+// Function for retrieving the locally stored array.
 function retrieveHighscore() {
 
     var storedScores = JSON.parse(localStorage.getItem("scoreList"));
